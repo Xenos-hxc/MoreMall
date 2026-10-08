@@ -1,0 +1,33 @@
+server:
+  port: 9088
+
+spring:
+  application:
+    name: demoservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL:jdbc:mysql://localhost:3306/moremall_demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai}
+    username: ${DB_USERNAME:demo}
+    password: ${DB_PASSWORD:local-demo-change-me}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  jackson:
+      local-date-time-format: yyyy-MM-dd HH:mm:ss
+      local-date-format: yyyy-MM-dd
+      local-time-format: HH:mm:ss
+  servlet:
+    multipart:
+      max-file-size: 1000000MB
+      max-request-size: 100000MB
+mybatis:
+  mapper-locations:
+    classpath:mapper/*.xml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9099/eureka
+ip: localhost
